@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>首页</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'easyui/themes/default/easyui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/steward.css' %}">
 </head>
 <body>
-
+<div id="cc" class="easyui-layout" style="width:100%;height:100%;">
+    <div data-options="region:'north',title:'大管家进销存',split:true" style="height:100px;"></div>
+    <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
+    <div data-options="region:'west',title:'菜单',split:true" style="width:100px;">
+        <div id="westMenu" style="width:300px"></div>
+    </div>
+    <div data-options="region:'center',title:'任务窗口'" style="padding:5px;background:#eee;"></div>
+</div>
 </body>
+<script src="{% static 'easyui/jquery.min.js' %}"></script>
+<script src="{% static 'easyui/jquery.easyui.min.js' %}"></script>
+<script>
+    const menuData = [{
+        text: 'Item1',
+        iconCls: 'icon-sum',
+        state: 'open',
+        children: [{
+            text: 'Option1'
+        }, {
+            text: 'Option2'
+        }, {
+            text: 'Option3',
+            children: [{
+                text: 'Option31'
+            }, {
+                text: 'Option32'
+            }]
+        }]
+    }, {
+        text: 'Item2',
+        iconCls: 'icon-more',
+        children: [{
+            text: 'Option4'
+        }, {
+            text: 'Option5'
+        }, {
+            text: 'Option6'
+        }]
+    }];
+    $('#westMenu').sidemenu({
+        data: menuData,
+        border: true
+    })
+</script>
 </html>

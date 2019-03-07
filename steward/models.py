@@ -8,7 +8,6 @@
 from django.db import models
 
 
-
 class Customer(models.Model):
     customer_id = models.AutoField(primary_key=True)
     customer_name = models.CharField(max_length=128)
@@ -25,6 +24,8 @@ class Customer(models.Model):
     class Meta:
         managed = False
         db_table = 'customer'
+        verbose_name = "客户"
+        verbose_name_plural = "客户"
 
 
 class Enterprise(models.Model):
@@ -42,6 +43,8 @@ class Enterprise(models.Model):
     class Meta:
         managed = False
         db_table = 'enterprise'
+        verbose_name = "企业"
+        verbose_name_plural = "企业"
 
 
 class EnterpriseDepartment(models.Model):
@@ -53,6 +56,8 @@ class EnterpriseDepartment(models.Model):
     class Meta:
         managed = False
         db_table = 'enterprise_department'
+        verbose_name = "企业部门"
+        verbose_name_plural = "企业部门"
 
 
 class Order(models.Model):
@@ -72,6 +77,8 @@ class Order(models.Model):
     class Meta:
         managed = False
         db_table = 'order'
+        verbose_name = "订单"
+        verbose_name_plural = "订单"
 
 
 class OrderDetails(models.Model):
@@ -85,6 +92,8 @@ class OrderDetails(models.Model):
     class Meta:
         managed = False
         db_table = 'order_details'
+        verbose_name = "订单详情"
+        verbose_name_plural = "订单详情"
 
 
 class OrderReturned(models.Model):
@@ -104,6 +113,8 @@ class OrderReturned(models.Model):
     class Meta:
         managed = False
         db_table = 'order_returned'
+        verbose_name = "退货单"
+        verbose_name_plural = "退货单"
 
 
 class OrderReturnedDetails(models.Model):
@@ -117,6 +128,8 @@ class OrderReturnedDetails(models.Model):
     class Meta:
         managed = False
         db_table = 'order_returned_details'
+        verbose_name = "退货单详情"
+        verbose_name_plural = "退货单详情"
 
 
 class Prodcut(models.Model):
@@ -135,6 +148,8 @@ class Prodcut(models.Model):
     class Meta:
         managed = False
         db_table = 'prodcut'
+        verbose_name = "产品详情"
+        verbose_name_plural = "产品详情"
 
 
 class ProductClass(models.Model):
@@ -152,6 +167,8 @@ class ProductClass(models.Model):
     class Meta:
         managed = False
         db_table = 'product_class'
+        verbose_name = "产品分类"
+        verbose_name_plural = "产品分类"
 
 
 class ProductDetails(models.Model):
@@ -170,6 +187,8 @@ class ProductDetails(models.Model):
     class Meta:
         managed = False
         db_table = 'product_details'
+        verbose_name = "产品详情"
+        verbose_name_plural = "产品详情"
 
 
 class ProductStandard(models.Model):
@@ -184,6 +203,8 @@ class ProductStandard(models.Model):
     class Meta:
         managed = False
         db_table = 'product_standard'
+        verbose_name = "产品规格"
+        verbose_name_plural = "产品规格"
 
 
 class ProductUnit(models.Model):
@@ -198,6 +219,8 @@ class ProductUnit(models.Model):
     class Meta:
         managed = False
         db_table = 'product_unit'
+        verbose_name = "产品单位"
+        verbose_name_plural = "产品单位"
 
 
 class Storage(models.Model):
@@ -212,6 +235,8 @@ class Storage(models.Model):
     class Meta:
         managed = False
         db_table = 'storage'
+        verbose_name = "仓库"
+        verbose_name_plural = "仓库"
 
 
 class StorageStock(models.Model):
@@ -230,6 +255,8 @@ class StorageStock(models.Model):
     class Meta:
         managed = False
         db_table = 'storage_stock'
+        verbose_name = "库存"
+        verbose_name_plural = "库存"
 
 
 class Supplier(models.Model):
@@ -248,33 +275,20 @@ class Supplier(models.Model):
     class Meta:
         managed = False
         db_table = 'supplier'
-
-
-class User(models.Model):
-    uid = models.AutoField(primary_key=True)
-    phone = models.CharField(max_length=20)
-    user_name = models.CharField(max_length=20)
-    nick_name = models.CharField(max_length=128, blank=True, null=True)
-    password = models.CharField(max_length=128)
-    department = models.IntegerField()
-    create_time = models.DateTimeField()
-    update_time = models.DateTimeField()
-    eid = models.IntegerField()
-    row_status = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'user'
+        verbose_name = "供应商"
+        verbose_name_plural = "供应商"
 
 
 class UserLoginHistory(models.Model):
-    history_id = models.AutoField(primary_key=True)
-    token = models.CharField(max_length=128)
-    ip = models.CharField(max_length=50)
-    create_time = models.DateTimeField(blank=True, null=True)
-    remember = models.IntegerField()
-    uid = models.IntegerField()
+    history_id = models.AutoField(primary_key=True, verbose_name="记录id")
+    token = models.CharField(max_length=128, verbose_name="令牌")
+    ip = models.CharField(max_length=50, verbose_name="ip")
+    create_time = models.DateTimeField(blank=True, null=True, verbose_name="创建时间")
+    remember = models.IntegerField(verbose_name="记住我")
+    uid = models.IntegerField(verbose_name="用户id")
 
     class Meta:
         managed = False
         db_table = 'user_login_history'
+        verbose_name = "用户登录历史"
+        verbose_name_plural = "用户登录历史数据"
